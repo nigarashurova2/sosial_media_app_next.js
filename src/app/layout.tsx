@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "sonner";
+import dynamic from "next/dynamic";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,6 +21,11 @@ export const metadata: Metadata = {
   description: "The social media app for powernerds",
 };
 
+const ThemeProvider = dynamic(
+  () => import("next-themes").then((mod) => mod.ThemeProvider),
+  { ssr: false },
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

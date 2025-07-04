@@ -1,3 +1,5 @@
+import SearchField from "@/components/SearchFields";
+import UserButton from "@/components/UserButton";
 import Link from "next/link";
 import React from "react";
 
@@ -8,6 +10,8 @@ export default function Navbar() {
         <Link href="/" className="text-2xl font-bold text-primary">
           bugbook
         </Link>
+        <SearchField/>
+        <UserButton className="sm:ms-auto"/>
       </div>
     </div>
   );
