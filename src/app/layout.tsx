@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "sonner";
 import dynamic from "next/dynamic";
+import ReactQueryProvider from "./ReactQueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,6 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ReactQueryProvider>
+
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -42,6 +46,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        </ReactQueryProvider>
         <Toaster />
       </body>
     </html>
