@@ -1,6 +1,6 @@
 import { Loader2 } from "lucide-react";
 import { cn } from "../lib/utils";
-import { Button } from "./ui/button";
+import { Button, ButtonProps } from "./ui/button";
 
 interface LoadingButtonProps {
   loading: boolean;
@@ -11,7 +11,7 @@ export default function LoadingButton({
   disabled,
   className,
   ...props
-}: LoadingButtonProps & React.ComponentProps<"button">) {
+}: LoadingButtonProps & React.ComponentProps<"button"> & ButtonProps) {
   return (
     <Button
       disabled={loading || disabled}
